@@ -1,4 +1,10 @@
 /* eslint-disable no-console */
+const {
+  isMerged,
+  isTargetPR,
+  extractPayloadForCreateReleaseFromEventPayload
+} = require('./lib/helper');
+
 const githubhook = require('githubhook');
 const github = githubhook({
   port:process.env.PORT || 5000,
@@ -15,5 +21,15 @@ githubClient.authenticate({
 
 github.listen();
 
-github.on('issues', function (event, repo, ref, data) { // eslint-disable-line no-unused-vars
+github.on('pull_request', function (x, y, data) { // eslint-disable-line no-unused-vars
+  if (!isTargetPR(data)) {
+    return;
+  }
+
+  if (!isMerged(data)) {
+    return;
+  }
+
+  const payload = extractPayloadForCreateReleaseFromEventPayload(data);
+  githubClient.repos.createRelease(payload);
 });
