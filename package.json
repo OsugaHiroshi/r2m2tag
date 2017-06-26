@@ -5,12 +5,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "ava"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ava": "^0.19.1",
     "github": "^7.0.1",
-    "githubhook": "^1.7.1"
+    "githubhook": "^1.7.1",
+    "moment": "^2.18.1"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1"
   }
 }
