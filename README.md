@@ -6,9 +6,6 @@ r2mというタイトルのPRがマージされた時に自動的にtagを作る
 # environment variables
 - ENTRY_POINT
   - githubのhookを受け取るエントリーポイント
-- TARGET_REPOS
-  - CSV形式でリポジトリを指定
-  - ex `user/repo,org/repo`
 - GITHUB_PERSONAL_TOKEN
   - github の パーソナルトークン
   - 必須スコープ
